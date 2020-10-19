@@ -4,9 +4,13 @@ import LetterKey from "./LetterKey";
 
 import { colors, contentWidth } from "./GlobalStyles";
 
-const Keyboard = ({}) => (
+const Keyboard = ({ letters, usedLetters, onClickFunc }) => (
   <Wrapper>
-    <LetterKey />
+    <LetterKey
+      letters={letters}
+      usedLetters={usedLetters}
+      onClickFunc={onClickFunc}
+    />
   </Wrapper>
 );
 
