@@ -48,7 +48,7 @@ const SVG = styled.svg`
   .right-hand,
   .left-foot,
   .right-foot {
-    /* stroke: transparent; */
+    stroke: transparent;
   }
 `;
 

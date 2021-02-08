@@ -33,6 +33,13 @@ const App = () => {
     ? "Continue"
     : "Start";
 
+  const handleNewGame = () => {
+    setGame({ ...game, over: !game.over, started: !game.started });
+    setWord({ str: "", revealed: [] });
+    setWrongGuesses(wrongGuesses.splice());
+    setUsedLetters(usedLetters.splice());
+  };
+
   const getNewWord = () => {
     let newWord = words[Math.floor(Math.random() * words.length)];
     console.log(newWord);
@@ -84,12 +91,16 @@ const App = () => {
 
   const handleEndGame = (win) => {
     setGame({ ...game, over: true, win: win });
-    alert(`Game Over! You ${win ? "win" : "lose"}`);
   };
 
+  console.log(game);
   return (
     <Wrapper>
-      {/* <GameOverModal /> */}
+      {game.over && game.started ? (
+        <GameOverModal win={game.win} word={word.str} restart={handleNewGame} />
+      ) : (
+        <></>
+      )}
       <Header />
       <Nav>
         <Button onClickFunc={handleStart}>{dynamicBtn}</Button>
